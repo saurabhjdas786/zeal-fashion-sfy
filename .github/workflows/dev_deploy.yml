@@ -18,5 +18,5 @@ jobs:
       - name: Download themekit and Deploy the theme
         run: |
           curl -s https://shopify.dev/themekit.py | sudo python
-          theme deploy -e=development --password=${{secrets.SHOPIFY_STORE_PASSWORD}} --themeid=${{secrets.DEVELOPMENT_THEME_ID}}
+          theme deploy --store=${{secrets.SHOPIFY_STORE_NAME}} --password=${{secrets.SHOPIFY_STORE_PASSWORD}} --themeid=${{secrets.DEVELOPMENT_THEME_ID}}
           
