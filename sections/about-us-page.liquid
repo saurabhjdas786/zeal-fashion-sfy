@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="img-container">
+    {{section.settings.ceo-image | img_tag}}
+  </div>
+  <div class="info-container">
+    <p>
+      {{section.settings.about-us-content}}
+    </p>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .content-block {
+    margin: 0;
+    padding: 1rem;
+    background : {{ section.settings.about-us-bg-color }};
+    color : {{ section.settings.about-us-fg-color }};
+  }
+
+  .img-container {
+    margin: 1rem;
+    padding: 0;
+    width: 40%; 
+  }
+
+  .img-container img {
+  	width: 100vw !important;
+    height: 100vh !important;
+  }
+
+
+  .info-container {
+    margin: 1rem;
+    width: 60%;
+  }
+</style>
+
+
+{% schema %}
+	{
+    "name": "About Us",
+    "settings": [
+      {
+   		 	"type": "image_picker",
+    	  "id": "ceo-image",
+   	  	"label": "CEO image"
+		  },
+    	{
+     		"type": "text",
+   	   	"id": "about-us-content",
+  	  	"label": "Content",
+			  "default": "About the CEO in short paragraphs"
+  	 	},
+  	 	{
+     		"type": "color",
+     		"id": "about-us-bg-color",
+     		"label": "Background color",
+     		"default": "#272727"
+   		},
+		  {
+       	"type": "color",
+       	"id": "about-us-fg-color",
+       	"label": "Foreground color",
+       	"default": "#ffffff"
+     	}
+    ]
+  }
+{% endschema %}
