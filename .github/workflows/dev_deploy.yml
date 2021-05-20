@@ -1,0 +1,24 @@
+name: Deploy theme to the development env
+
+on:
+  push:
+    branches: [ development ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python 2.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
+          
+      - name: Download themekit and Deploy the theme
+        run: |
+          curl -s https://shopify.dev/themekit.py | sudo python
+          npm install
+          npm run build
+          theme deploy -e=development --password=${{secrets.SHOPIFY_STORE_PASSWORD}} --themeid=${{secrets.DEVELOPMENT_THEME_ID}}
+          
