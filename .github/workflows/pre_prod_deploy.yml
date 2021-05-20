@@ -2,7 +2,7 @@ name: Deploy theme to the pre-prod env
 
 on:
   push:
-    branches: [ pre-prod ]
+    branches: [ main ]
 
 jobs:
   build:
